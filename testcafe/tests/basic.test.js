@@ -126,6 +126,7 @@ test(`7- Quadro de Pré/Co Requisitos: Verificar a exibição das informações`
 
     .expect(Selector("tr.SSA_PiscinaLinha td").innerText)
     .contains("Total de Créditos Aprovados")
+    .expect(Selector("tr.SSA_PiscinaLinha td").innerText)
     .contains("Total de Créditos Matriculados");
 });
 
