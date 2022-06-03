@@ -119,9 +119,15 @@ test(`6- Nota de estágio: Verificar exibição da tabela`, async (t) => {
     .eql("Ano/Semestre")
 
     .expect(
-      Selector("#ctl00_Corpo_UCNotaEstagio1_notaEstagioGridView td").innerText
+      Selector("#ctl00_Corpo_UCNotaEstagio1_notaEstagioGridView td").nth(0)
+        .innerText
     )
-    .contains("EST1");
+    .contains("EST1")
+    .expect(
+      Selector("#ctl00_Corpo_UCNotaEstagio1_notaEstagioGridView td").nth(1)
+        .innerText
+    )
+    .contains("Estágio Supervisionado");
 });
 
 test(`7- Quadro de Pré/Co Requisitos: Verificar a exibição das informações`, async (t) => {
@@ -134,7 +140,71 @@ test(`7- Quadro de Pré/Co Requisitos: Verificar a exibição das informações`
     .contains("Total de Créditos Matriculados");
 });
 
-test(`8- Pedidos de prova presencial`, async (t) => {
+test(`8- Tesouraria: Verificar dados`, async (t) => {
+  await t
+    .click("#ctl00_Corpo_HyperLink17")
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_Label4").innerText)
+    .eql("Dados Bancários para Pagamento")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_lblDebitos").innerText)
+    .eql("Débitos")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_lblCreditos").innerText)
+    .eql("Créditos e Devoluções")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(0).innerText)
+    .contains("Histórico")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(1).innerText)
+    .contains("Vencimento")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(2).innerText)
+    .contains("Valor")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(3).innerText)
+    .contains("Multa")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(4).innerText)
+    .contains("Correção")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(5).innerText)
+    .contains("Juros")
+
+    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(6).innerText)
+    .contains("Total")
+
+    .expect(
+      Selector("#MSO_ContentTable table table table table tr td").nth(2)
+        .innerText
+    )
+    .contains("Agência")
+
+    .expect(
+      Selector("#MSO_ContentTable table table table table tr td").nth(4)
+        .innerText
+    )
+    .contains("Conta Corrente:")
+
+    .expect(
+      Selector("#MSO_ContentTable table table table table tr td").nth(6)
+        .innerText
+    )
+    .contains("Titular:")
+
+    .expect(
+      Selector("#MSO_ContentTable table table table table tr td").nth(10)
+        .innerText
+    )
+    .contains("Identificador Bancário:")
+
+    .expect(
+      Selector("#MSO_ContentTable table table table table tr td").nth(14)
+        .innerText
+    )
+    .contains("Chave Pix (CNPJ):");
+});
+
+test(`9- Pedidos de prova presencial`, async (t) => {
   await t
     .click("#ctl00_Corpo_HyperLink24")
     .click(
