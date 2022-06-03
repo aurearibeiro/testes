@@ -1,15 +1,5 @@
 import { Selector } from "testcafe";
 
-// formulario
-/* .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl02_rdbOpcao_0")
-    .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl03_rdbOpcao_1")
-    .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl04_rdbOpcao_4")
-    .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl05_rdbOpcao_1")
-    .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl06_rdbOpcao_1")
-    .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl07_rdbOpcao_2")
-    .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_btnConfirmar1")
-    .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_Button3") */
-
 fixture`Testes usando testcafe`
   .page`https://siteseguro.inatel.br/PortalAcademico/WebLogin.aspx?ReturnUrl=%2fPortalacademico`.beforeEach(
   async (t) => {
@@ -30,6 +20,20 @@ fixture`Testes usando testcafe`
       )
       .typeText("#ctl00_Corpo_TabAcessoLogin_TabAluno_LogOn_Password", "119922")
       .click("#ctl00_Corpo_TabAcessoLogin_TabAluno_LogOn_LoginButton");
+
+    const form = Selector("#ctl00_Corpo_UCModeloAvaliacaoPU1_lblAvaliacao");
+
+    if (await form.exists) {
+      await t
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl02_rdbOpcao_0")
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl03_rdbOpcao_1")
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl04_rdbOpcao_4")
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl05_rdbOpcao_1")
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl06_rdbOpcao_1")
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_GridDados_ctl07_rdbOpcao_2")
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_btnConfirmar1")
+        .click("#ctl00_Corpo_UCModeloAvaliacaoPU1_Button3");
+    }
   }
 );
 
