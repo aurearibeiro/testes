@@ -141,6 +141,11 @@ test(`7- Quadro de Pré/Co Requisitos: Verificar a exibição das informações`
 });
 
 test(`8- Tesouraria: Verificar dados`, async (t) => {
+  const tableDeb = Selector("#ctl00_Corpo_UCDebitos1_GridBenner th");
+  const tableBankDetails = Selector(
+    "#MSO_ContentTable table table table table tr td"
+  );
+
   await t
     .click("#ctl00_Corpo_HyperLink17")
     .expect(Selector("#ctl00_Corpo_UCDebitos1_Label4").innerText)
@@ -152,63 +157,57 @@ test(`8- Tesouraria: Verificar dados`, async (t) => {
     .expect(Selector("#ctl00_Corpo_UCDebitos1_lblCreditos").innerText)
     .eql("Créditos e Devoluções")
 
-    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(0).innerText)
+    .expect(tableDeb.nth(0).innerText)
     .contains("Histórico")
 
-    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(1).innerText)
+    .expect(tableDeb.nth(1).innerText)
     .contains("Vencimento")
 
-    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(2).innerText)
+    .expect(tableDeb.nth(2).innerText)
     .contains("Valor")
 
-    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(3).innerText)
+    .expect(tableDeb.nth(3).innerText)
     .contains("Multa")
 
-    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(4).innerText)
+    .expect(tableDeb.nth(4).innerText)
     .contains("Correção")
 
-    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(5).innerText)
+    .expect(tableDeb.nth(5).innerText)
     .contains("Juros")
 
-    .expect(Selector("#ctl00_Corpo_UCDebitos1_GridBenner th").nth(6).innerText)
+    .expect(tableDeb.nth(6).innerText)
     .contains("Total")
 
-    .expect(
-      Selector("#MSO_ContentTable table table table table tr td").nth(2)
-        .innerText
-    )
+    .expect(tableBankDetails.nth(2).innerText)
     .contains("Agência")
 
-    .expect(
-      Selector("#MSO_ContentTable table table table table tr td").nth(4)
-        .innerText
-    )
+    .expect(tableBankDetails.nth(3).innerText)
+    .contains("0872-9")
+
+    .expect(tableBankDetails.nth(4).innerText)
     .contains("Conta Corrente:")
+    .expect(tableBankDetails.nth(5).innerText)
+    .contains("3867-9")
 
-    .expect(
-      Selector("#MSO_ContentTable table table table table tr td").nth(6)
-        .innerText
-    )
+    .expect(tableBankDetails.nth(6).innerText)
     .contains("Titular:")
+    .expect(tableBankDetails.nth(7).innerText)
+    .contains("Fundação Instituto Nacional de Telecomunicações")
 
-    .expect(
-      Selector("#MSO_ContentTable table table table table tr td").nth(10)
-        .innerText
-    )
+    .expect(tableBankDetails.nth(10).innerText)
     .contains("Identificador Bancário:")
+    .expect(tableBankDetails.nth(11).innerText)
+    .contains("00012499999-9")
 
-    .expect(
-      Selector("#MSO_ContentTable table table table table tr td").nth(14)
-        .innerText
-    )
-    .contains("Chave Pix (CNPJ):");
+    .expect(tableBankDetails.nth(14).innerText)
+    .contains("Chave Pix (CNPJ):")
+    .expect(tableBankDetails.nth(15).innerText)
+    .contains("24.492.886/0001-04");
 });
 
 test(`9- Pedidos de prova presencial`, async (t) => {
-  await t
-    .click("#ctl00_Corpo_HyperLink24")
-    .click(
-      "#ctl00_Corpo_UCPedidosProvasPresencial1_GridDados_ctl02_chbItemProva"
-    )
-    .click("#ctl00_Corpo_UCPedidosProvasPresencial1_btnConfirmarProva");
+  await t.click("#ctl00_MenuLateral_UCMenuAcademico10_HyperLink5");
+  const varH003 = Selector("#ctl00_Corpo_UCNotas1_lblTurma01");
+
+  await t.expect(varH003.innerText).contains("H002");
 });
