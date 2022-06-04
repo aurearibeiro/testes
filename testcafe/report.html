@@ -73,9 +73,9 @@
       <div class="client-logo" style="padding:15px"></div>
       <div class="bg-primary" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
         <h3>Summary</h3><br>
-        <p class="lead">Start Time: Fri Jun 03 2022 20:53:52 GMT-0300 (Horário Padrão de Brasília)</p>
+        <p class="lead">Start Time: Sat Jun 04 2022 09:55:44 GMT-0300 (Horário Padrão de Brasília)</p>
         <p class="lead">Browsers: Chrome 101.0.4951.41 / Linux 0.0</p>
-        <p class="lead">Duration: 1m 18s</p>
+        <p class="lead">Duration: 1m 24s</p>
         <p class="lead">Tests Failed: 1 out of 9</p>
         <p class="lead">Tests Skipped: 0</p>
       </div><br>
@@ -96,7 +96,7 @@
   <td>Testes usando testcafe</td>
   <td>1- Histórico acadêmico: Verificar a exibição da tabela</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>12s</td>
+  <td>10s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -112,7 +112,7 @@
   <td>Testes usando testcafe</td>
   <td>3- Pedidos (notas): Verificar exibição da mensagem</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>6s</td>
+  <td>9s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -120,7 +120,7 @@
   <td>Testes usando testcafe</td>
   <td>4- Consulta de pedidos (notas): Verificar exibição da mensagem</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>6s</td>
+  <td>8s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -128,7 +128,7 @@
   <td>Testes usando testcafe</td>
   <td>5- Requerimentos: Verificar requerimentos existentes</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>8s</td>
+  <td>16s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -136,7 +136,7 @@
   <td>Testes usando testcafe</td>
   <td>6- Nota de estágio: Verificar exibição da tabela</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>6s</td>
+  <td>8s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -144,7 +144,7 @@
   <td>Testes usando testcafe</td>
   <td>7- Quadro de Pré/Co Requisitos: Verificar a exibição das informações</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>7s</td>
+  <td>8s</td>
   <td>passed</td>
  </tr>
  <tr class="success">
@@ -152,7 +152,7 @@
   <td>Testes usando testcafe</td>
   <td>8- Tesouraria: Verificar dados</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>9s</td>
+  <td>8s</td>
   <td>passed</td>
  </tr>
  <tr class="danger">
@@ -160,7 +160,7 @@
   <td>Testes usando testcafe</td>
   <td>9- Pedidos de prova presencial</td>
   <td>Chrome 101.0.4951.41 / Linux 0.0</td>
-  <td>16s</td>
+  <td>9s</td>
   <td><a href="#test-9">failed</a></td>
  </tr>
 
@@ -179,30 +179,22 @@
       <br>
       <h3>Error Details</h3>
        <h4 id="test-9" style="color: red;">9. Testes usando testcafe - 9- Pedidos de prova presencial</h4>
- <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">The specified selector does not match any element in the DOM tree.
-
- &gt; | Selector(&#39;#ctl00_MenuLateral_UCMenuAcademico10_HyperLink5&#39;)
+ <pre style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">AssertionError: expected undefined to be truthy
 
 Browser: Chrome 101.0.4951.41 / Linux 0.0
 
-   204 |    .expect(tableBankDetails.nth(15).innerText)
-   205 |    .contains(&quot;24.492.886/0001-04&quot;);
-   206 |&#125);
-   207 |
-   208 |test(`9- Pedidos de prova presencial`, async (t) =&gt; &#123
- &gt; 209 |  await t.click(&quot;#ctl00_MenuLateral_UCMenuAcademico10_HyperLink5&quot;);
-   210 |  const varH003 = Selector(&quot;#ctl00_Corpo_UCNotas1_lblTurma01&quot;);
-   211 |
-   212 |  await t.expect(varH003.innerText).contains(&quot;H002&quot;);
-   213 |});
-   214 |
+   212 |    .innerText;
+   213 |
+   214 |  await t
+   215 |    .click(&quot;#ctl00_MenuLateral_UCMenuAcademico10_HyperLink5&quot;)
+   216 |    .expect(element.visible)
+ &gt; 217 |    .ok();
+   218 |&#125);
+   219 |
 
-   at &lt;anonymous&gt; (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:209:11)
+   at &lt;anonymous&gt; (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:217:6)
    at asyncGeneratorStep (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:1:247)
-   at _next (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:1:585)
-   at &lt;anonymous&gt; (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:1:750)
-   at &lt;anonymous&gt; (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:1:491)
-   at &lt;anonymous&gt; (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:208:5) </pre><br>
+   at _next (/home/aurea/Área de Trabalho/PROJETO/testes/testcafe/tests/basic.test.js:1:585) </pre><br>
     </div>
     <script>
       const modal = document.getElementById('myModal');

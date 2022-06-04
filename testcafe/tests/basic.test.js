@@ -1,4 +1,4 @@
-import { Selector } from "testcafe";
+import { Selector, ClientFunction } from "testcafe";
 
 fixture`Testes usando testcafe`
   .page`https://siteseguro.inatel.br/PortalAcademico/WebLogin.aspx?ReturnUrl=%2fPortalacademico`.beforeEach(
@@ -206,8 +206,13 @@ test(`8- Tesouraria: Verificar dados`, async (t) => {
 });
 
 test(`9- Pedidos de prova presencial`, async (t) => {
-  await t.click("#ctl00_MenuLateral_UCMenuAcademico10_HyperLink5");
-  const varH003 = Selector("#ctl00_Corpo_UCNotas1_lblTurma01");
+  await t.click("#ctl00_Corpo_HyperLink24");
 
-  await t.expect(varH003.innerText).contains("H002");
+  const element = Selector("#ctl00_Corpo_UCPedidosProvasPresencial1_tvwProvat1")
+    .innerText;
+
+  await t
+    .click("#ctl00_MenuLateral_UCMenuAcademico10_HyperLink5")
+    .expect(element.visible)
+    .ok();
 });
